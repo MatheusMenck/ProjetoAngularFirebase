@@ -1,100 +1,60 @@
-<ion-content [fullscreen]="true">
+<ion-content>
 
   <ion-row class="ion-justify-content-center">
-    <ion-col size="12"  size-lg="8" size-xl="6">
+    <ion-col size="12" size-lg="4">
 
-      <!-- CABEÇALHO DO CURRICULO -->
-      <ion-row>
-        <ion-col size="12" size-lg="4">
-          <img class="perfil-pic" src="{{this.pessoa.foto}}">
-        </ion-col>
-        <ion-col size="12" size-lg="8">
-          <ion-label>
-            <h2 class="titulo-nome">{{this.pessoa.nome}}</h2>
-            <h4 class="titulo-objetivo">{{this.pessoa.objetivo}}</h4>
-          </ion-label>
-        </ion-col>
-      </ion-row>
-
-      <!-- LINHA DIVISÓRIA -->
-      <ion-row>
-        <ion-col size="4">
-          <ion-item-divider></ion-item-divider>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <h3>CONTATO</h3>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item-divider></ion-item-divider>
-        </ion-col>
-      </ion-row>
-
-      <!-- INFORMAÇÕES DE CONTATO -->
-       <ion-row>
+      <ion-row class="ion-justify-content-center">
         <ion-col size="12">
           <ion-card>
-            <ion-item>
-              <ion-icon slot="start" name="mail-outline"></ion-icon>
-              <ion-label>{{this.pessoa.contato.email}}</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="call-outline"></ion-icon>
-              <ion-label>{{this.pessoa.contato.telefone}}</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="logo-github"></ion-icon>
-              <ion-label>{{this.pessoa.contato.github}}</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-icon slot="start" name="logo-linkedin"></ion-icon>
-              <ion-label>{{this.pessoa.contato.linkedin}}</ion-label>
-            </ion-item>
+            <ion-card-header>
+              <ion-card-title>Funcionarios</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button routerLink="/cadastrar-funcionario">Cadastrar</ion-button>
+            </ion-card-content>
           </ion-card>
-        </ion-col>
-       </ion-row>
-
-       <!-- LINHA DIVISÓRIA -->
-      <ion-row>
-        <ion-col size="4">
-          <ion-item-divider></ion-item-divider>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <h3>SOFT SKILLS</h3>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item-divider></ion-item-divider>
         </ion-col>
       </ion-row>
 
-       <!-- SOFT SKILLS -->
-        <ion-row>
-          <ion-col size="12">
-            <ion-card>
-              <ng-container *ngFor="let softskill of this.pessoa.softskills">
-                <ion-item>
-                  <ion-label>{{softskill}}</ion-label>
-                </ion-item>
-              </ng-container>
-            </ion-card>
-          </ion-col>
-        </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Funcionarios</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button routerLink="/listar-funcionario">Listar todos</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
 
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Funcionarios</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button routerLink="/excluir-funcionario">Excluir</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Funcionarios</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button routerLink="/atualizar-funcionario">Atualizar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
 
     </ion-col>
   </ion-row>
-
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="12" size-lg="8">
-      <ion-item>
-        <ion-label>Deixe um recado</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-input label="assuntos da mensagem" [(ngModel)]="this.recado.assunto"></ion-input>
-      </ion-item>
-
-      <ion-button (click)="enviar()">Enviar recado</ion-button>
-    </ion-col>
-  </ion-row>
-  
-
 </ion-content>
