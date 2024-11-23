@@ -1,4 +1,58 @@
 <ion-content [fullscreen]="true">
-  <app-cabecalho title="Página de Contato" subtitle="Entre em contaco cosco"></app-cabecalho>
+
+  <app-cabecalho title="Página de Contato" subtitle="Entre em contato conosco"></app-cabecalho>
   <app-menu></app-menu>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-row>
+        <ion-input label="Nome Completo" [(ngModel)]="this.contato.nome"></ion-input>
+        <ion-input label="Assunto" [(ngModel)]="this.contato.assunto"></ion-input>
+        <ion-input label="Mensagem" [(ngModel)]="this.contato.mensagem"></ion-input>
+
+        <ion-item>
+          <ng-container *ngFor="let estrelinha of this.contato.estrelinha">
+            <ion-icon name="star-outline" (click)="setEstrelinha(estrelinha)" [ngStyle]="{'color' : estrelinha.selecionado ? 'yellow' : 'white'}"></ion-icon>
+          </ng-container>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-button (click)="atualizar()">Atualizar</ion-button>
+          <ion-button (click)="enviar()" color="primary">Enviar</ion-button>
+        </ion-item>
+        
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-list>
+        <ng-container *ngFor="let contato of this.contatos">
+
+          <!-- loading -->
+            <ion-row *ngIf="this.crudService.isLoading">
+              <ion-col size="3"><ion-skeleton-text [animated]="true" style="width: 100%; height: 30px; "></ion-skeleton-text></ion-col>
+              <ion-col size="3"><ion-skeleton-text [animated]="true" style="width: 100%; height: 30px;"></ion-skeleton-text></ion-col>
+              <ion-col size="5"><ion-skeleton-text [animated]="true" style="width: 100%; height: 30px;"></ion-skeleton-text></ion-col>
+              <ion-col size="1"><ion-skeleton-text [animated]="true" style="width: 100%; height: 30px;"></ion-skeleton-text></ion-col>
+            </ion-row>
+
+            <!-- loaded -->
+            <ion-row *ngIf="!this.crudService.isLoading">
+              <ion-col size="3">Nome: {{contato.nome}}</ion-col>
+              <ion-col size="3">Assunto: {{contato.assunto}}</ion-col>
+              <ion-col size="4">Mensagem: {{contato.mensagem}}</ion-col>
+
+              <ion-col size="1"><ion-icon name="pencil-outline" class="ion-text-end" color="warning" (click)="edit(contato)"></ion-icon></ion-col>
+              <ion-col size="1"><ion-icon name="close-outline" class="ion-text-end" color="danger" (click)="remove(contato.id)"></ion-icon></ion-col>
+
+            </ion-row>
+            
+
+        </ng-container>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
